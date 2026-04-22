@@ -1192,7 +1192,8 @@ async function deleteBillets(id) {
   renderAdminPanel();
   showToast('Billet supprimé');
 }
-
+const { data } = await supabase.auth.getUser()
+console.log(data.user.id)
 // ============================================================
 // TOAST
 // ============================================================
