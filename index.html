@@ -674,6 +674,8 @@ async function loadReservations() {
     showToast("Erreur chargement réservations");
     return;
   }
+
+  // ✅ ICI seulement
   reservations = data || [];
   renderReservations();
 }
@@ -1192,8 +1194,7 @@ async function deleteBillets(id) {
   renderAdminPanel();
   showToast('Billet supprimé');
 }
-const { data } = await supabase.auth.getUser()
-console.log(data.user.id)
+
 // ============================================================
 // TOAST
 // ============================================================
@@ -1203,21 +1204,7 @@ function showToast(msg) {
   el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 2800);
 }
-// ============================================================
-// INIT APP AU DEMARRAGE
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
-  // Date du jour
-  const today = new Date().toISOString().split('T')[0];
-  const dateInput = document.getElementById('s-date');
-  if (dateInput) dateInput.value = today;
 
-  // Charger les villes
-  populateCitySelects();
-
-  // 🔥 Charger les billets depuis Supabase
-  loadTickets();
-});
 </script>
 </body>
 </html>
